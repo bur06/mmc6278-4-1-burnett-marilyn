@@ -37,7 +37,7 @@ for(var i = 0; i < rdmWord.length; i++) {
     blanks.push("_");
   }
 }
-guessWord.innerHTML = blanks.join(" ");
+guessWord.textContent = blanks.join("");
 
 /*
 function letters(rdmWord) {
