@@ -11,6 +11,17 @@ var words = [
   'ukulele',
   'mango'
 ]
+
+var guessWord = document.getElementById("word-to-guess");
+var prevWord = document.getElementById("previous-word");
+var incorrectLtrs = document.getElementById("incorrect-letters");
+var remainGuesses = document.getElementById("remaining-guesses");
+var nbrWins = document.getElementById("wins");
+var nbrLosses = document.getElementById("losses");
+
+var correct = 0;
+var incorrect = 0;
+
 //select list word at random
 //place this word in the word-to-guess element
 //replace the word letters with underscores
