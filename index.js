@@ -23,6 +23,9 @@ var correct = 0;
 var incorrect = 0;
 
 //select list word at random
+var rdmWord = words[Math.floor(Math.random() * words.length)];
+console.log(rdmWord);
+
 //place this word in the word-to-guess element
 //replace the word letters with underscores
 //display 10 remaining quesses in remaining-quesses element
