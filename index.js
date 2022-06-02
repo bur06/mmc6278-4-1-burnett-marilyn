@@ -27,9 +27,25 @@ var guessesLeft = 10;
 var rdmWord = words[Math.floor(Math.random() * words.length)];
 
 //place this word in the word-to-guess element
-guessWord.textContent = rdmWord;
+guessWord.textContent = rdmWord.toLowerCase();
 
 //replace the word letters with underscores
+function blind (rdmWord, wordLtr) {
+  var indLtrs = rdmWord.split("");
+  var indLtrsResult = "";
+  var unScore = "";
+  for (var i = 0; i < wordLtr.length; i++) unScore += "_";
+}
+
+//indWordLtrs = rdmWord.split("");
+//wordLength = indWordLtrs.length;
+
+//for(var i = 0; i < wordLength; i++) {
+//  var blanks = wordLength[i];
+//  guessWord.textContent = blanks("_");
+//}
+
+
 //display 10 remaining quesses in remaining-quesses element
 //when key pressed ck if ltr is in the word
 //if ltr included, use it to replace underscore in word-to-guess element
