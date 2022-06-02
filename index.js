@@ -16,14 +16,13 @@ var words = [
 var guessWord = document.getElementById("word-to-guess");
 var prevWord = document.getElementById("previous-word");
 var incorrectLtrs = document.getElementById("incorrect-letters");
-var remainGuesses = document.getElementById("remaining-guesses");
+var remGuesses = document.getElementById("remaining-guesses");
 var nbrWins = document.getElementById("wins");
 var nbrLosses = document.getElementById("losses");
 var blanks = [];
 
 var correct = 0;
 var incorrect = 0;
-var guessesLeft = 10;
 
 //select list word at random
 var rdmWord = words[Math.floor(Math.random() * words.length)];
@@ -39,74 +38,9 @@ for(var i = 0; i < rdmWord.length; i++) {
 }
 guessWord.textContent = blanks.join("");
 
-/*
-function letters(rdmWord) {
-  var ltrArray = rdmWord.split("");
-  var wordLength = ltrArray.length;
-  
-  for(var i = 0; i < wordLength; i++) {
-    let wordNode = document.createElement("span");
-    wordNode.setAttribute("class", "wordLtr");
-    wordNode.setAttribute("id", i)
-    let text = document.createTextNode("_");
-    wordNode.appendChild(text);
-    guessWord.appendChild(wordNode)    
-  }
-}
-*/
-/*
-wordLtrs = rdmWord.split("");
-blanks = wordLtrs.length;
-for(var i = 0; i < blanks; i++) {
-  blanksAndCorrect.push("_");
-}
-guessWord.textContent = " " + blanksAndCorrect.join(" ");
-console.log(rdmWord);
-
-if (wordLtrs.toString() == blanksAndCorrect.toString()) {
-
-  MORE GOES HERE
-
-}
-*/
-/*
-function blind (rdmWord, wordLtrs) {
-  var ltrList = rdmWord.split("");
-  var ltrListResult = "";
-  var unScore = "";
-  for (var i = 0; i < wordLtrs.length; i++) unScore += "_";
-  var index = 0;
-  for (const i of ltrList) {
-    if (i === wordLtrs)
-      ltrList[index] = unScore;
-      index++;
-  }
-  //for (const i of ltrList) {
-  //  result += i + "";
-  //}
-  return ltrListResult;
-}
-*/
-/*
-function blind() {
-  indWordLtrs = rdmWord.split("");
-//  wordLength = indWordLtrs.length;
-
-  for(var i = 0; i < indWordLtrs.length; i++) {
-    if (indWordLtrs[i] === "-") {
-      guessWord.textContent = "-";
-    } else {
-      guessWord.textContent = "_"
-    }
-
-//    var blanks = wordLength[i];
-//    guessWord.textContent = blanks("_");
-  }
-}
-*/
-
-
 //display 10 remaining quesses in remaining-quesses element
+remGuesses.textContent = "10";
+
 //when key pressed ck if ltr is in the word
 //if ltr included, use it to replace underscore in word-to-guess element
 //if ltr NOT included, word-to-guess element remains unchanged
