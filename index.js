@@ -21,12 +21,14 @@ var nbrLosses = document.getElementById("losses");
 
 var correct = 0;
 var incorrect = 0;
+var guessesLeft = 10;
 
 //select list word at random
 var rdmWord = words[Math.floor(Math.random() * words.length)];
-console.log(rdmWord);
 
 //place this word in the word-to-guess element
+guessWord.textContent = rdmWord;
+
 //replace the word letters with underscores
 //display 10 remaining quesses in remaining-quesses element
 //when key pressed ck if ltr is in the word
