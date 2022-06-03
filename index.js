@@ -47,10 +47,23 @@ document.onkeyup = function(e) {
   var key = e.key.toLowerCase();
   var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   if (letters.includes(key) === false) || (guessedLtrs.includes(key.toLowerCase())) {
-    return null;
+    return null
   } else {
     guessedLtrs.push(key.toLowerCase());
     incorrectLtrs.textContent = guessedLtrs.join(" ");
+    var rightGuess = false;
+    for (var i = 0; i < rdmWord.length; i++) {
+      if (key === rdmWord.charAt(i)) {
+        blanks.splice(i, 1, key);
+        rightGuess = true;
+        guessWord.textContent = blanks.join(" ");
+      }
+      if (!blanks.includes("_")) {
+        correct++;
+        nbrWins.textContent = correct;
+        function(e);
+      }
+    }
   }
 }
 
