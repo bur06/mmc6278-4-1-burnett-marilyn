@@ -45,33 +45,33 @@ remGuesses.textContent = "10";
 
 //when key pressed ck if ltr is in the word
 document.onkeyup = function(e) {
-  var key = e.key.toLowerCase();
+  var keyGuess = e.key.toLowerCase();
   var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-  if (letters.includes(key) === false) {
+  if (letters.includes(keyGuess) === false) {
     return null;
   } else {
-    if (guessedLtrs.includes(key.toLowerCase())) {
+    if (guessedLtrs.includes(incorrectLtrs.toLowerCase())) {
       return null;
     } else {
-      guessedLtrs.push(key.toLowerCase());
+      guessedLtrs.push(keyGuess.toLowerCase());
       incorrectLtrs.textContent = guessedLtrs.join(" ");
       var rightGuess = false;
       for (var i = 0; i < rdmWord.length; i++) {
-        if (key === rdmWord.charAt(i)) {
-          blanks.splice(i, 1, key);
+        if (keyGuess === rdmWord.charAt(i)) {
+          blanks.splice(i, 1, keyGuess);
           rightGuess = true;
           guessWord.textContent = blanks.join(" ");
         }
-        if (!blanks.includes("_")) {
-          correct++;
-          nbrWins.textContent = correct;
+//        if (!blanks.includes("_")) {
+//          correct++;
+//          nbrWins.textContent = correct;
           //function(e);
-        }
+//        }
       }
-      if (!rightGuess) {
-        guessesLeft--;
-        remGuesses.textContent = guessesLeft;
-      }
+//      if (!rightGuess) {
+//        guessesLeft--;
+//        remGuesses.textContent = guessesLeft;
+//      }
     }
   }
 }
