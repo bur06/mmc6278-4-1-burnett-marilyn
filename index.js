@@ -19,8 +19,9 @@ var incorrectLtrs = document.getElementById("incorrect-letters");
 var remGuesses = document.getElementById("remaining-guesses");
 var nbrWins = document.getElementById("wins");
 var nbrLosses = document.getElementById("losses");
-var blanks = [];
 
+var blanks = [];
+var guessedLtrs = [];
 var correct = 0;
 var incorrect = 0;
 
@@ -42,6 +43,17 @@ guessWord.textContent = blanks.join("");
 remGuesses.textContent = "10";
 
 //when key pressed ck if ltr is in the word
+document.onkeyup = function(e) {
+  var key = e.key.toLowerCase();
+  var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  if (letters.includes(key) === false) || (guessedLtrs.includes(key.toLowerCase())) {
+    return null;
+  } else {
+    guessedLtrs.push(key.toLowerCase());
+    incorrectLtrs.textContent = guessedLtrs.join(" ");
+  }
+}
+
 //if ltr included, use it to replace underscore in word-to-guess element
 //if ltr NOT included, word-to-guess element remains unchanged
 //incorrectly guessed ltr added to incorrect-letters element
