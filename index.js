@@ -25,10 +25,10 @@ var guessesLeft = 10;
 var correct = 0;
 var incorrect = 0;
 
-//select list word at random
+//selects list word at random
 var rdmWord = words[Math.floor(Math.random() * words.length)];
 
-//place this word in the word-to-guess element
+//places word in the word-to-guess element
 guessWord.textContent = rdmWord.toLowerCase();
 
 //replace the word letters with underscores
@@ -52,7 +52,7 @@ document.onkeyup = function(e) {
 //    if (guessedLtrs.includes(keyGuess.toLowerCase())) {
 //      return null;
     } else {
-      //ltr pressed into lc & pushes to guessedLtrs array
+      //ltr pressed into lc & pushes to guessedLtrs array / replaces underscore
       guessedLtrs.push(keyGuess.toLowerCase());
       incorrectLtrs.textContent = guessedLtrs.join(" ");
       var rightGuess = false;
@@ -77,9 +77,7 @@ document.onkeyup = function(e) {
 //}
 
 
-//if ltr included, use it to replace underscore in word-to-guess element
-//if ltr NOT included, word-to-guess element remains unchanged
-//incorrectly guessed ltr added to incorrect-letters element
+
 //remaining guesses element should reflect one fewer remaining guess
 //no changes if non-ltr key chosen or same key chosen is repeated
 //count correct wins
