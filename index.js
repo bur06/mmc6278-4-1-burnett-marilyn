@@ -1,4 +1,3 @@
-debugger
 var words = [
   'bananas',
   'grapes',
@@ -49,10 +48,11 @@ document.onkeyup = function(e) {
   var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   if (letters.includes(keyGuess) === false) {
     return null;
-  } else {
-    if (guessedLtrs.includes(incorrectLtrs.toLowerCase())) {
-      return null;
+//  } else {
+//    if (guessedLtrs.includes(keyGuess.toLowerCase())) {
+//      return null;
     } else {
+      //ltr pressed into lc & pushes to guessedLtrs array
       guessedLtrs.push(keyGuess.toLowerCase());
       incorrectLtrs.textContent = guessedLtrs.join(" ");
       var rightGuess = false;
@@ -74,7 +74,8 @@ document.onkeyup = function(e) {
 //      }
     }
   }
-}
+//}
+
 
 //if ltr included, use it to replace underscore in word-to-guess element
 //if ltr NOT included, word-to-guess element remains unchanged
