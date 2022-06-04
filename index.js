@@ -46,12 +46,13 @@ remGuesses.textContent = "10";
 document.onkeyup = function(e) {
   var keyGuess = e.key.toLowerCase();
   var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-  if (letters.includes(keyGuess) === false) {
+
+  if ((letters.includes(keyGuess) === false) || (guessedLtrs.includes(keyGuess.toLowerCase()))) {
     return null;
-//  } else {
-//    if (guessedLtrs.includes(keyGuess.toLowerCase())) {
-//      return null;
-    } else {
+  }
+  
+
+  /*  } else {
       //ltr pressed into lc & pushes to guessedLtrs array / replaces underscore
       guessedLtrs.push(keyGuess.toLowerCase());
       incorrectLtrs.textContent = guessedLtrs.join(" ");
@@ -77,7 +78,8 @@ document.onkeyup = function(e) {
       }
     }
   }
-//}
+*/
+}
 
 
 
