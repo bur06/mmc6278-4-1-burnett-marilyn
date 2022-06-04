@@ -53,8 +53,8 @@ document.onkeyup = function(e) {
   } else {
       //ltr pressed into lc & pushes to guessedLtrs array / replaces underscore
       guessedLtrs.push(keyGuess.toLowerCase());
-      incorrectLtrs.textContent = guessedLtrs.join(" ");
       var rightGuess = false;
+      incorrectLtrs.textContent = guessedLtrs.join(" ");
       for (var i = 0; i < rdmWord.length; i++) {
         if (keyGuess === rdmWord.charAt(i)) {
           blanks.splice(i, 1, keyGuess);
