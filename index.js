@@ -62,23 +62,25 @@ document.onkeyup = function(e) {
           rightGuess = true;
           guessWord.textContent = blanks.join(" ");
         }
-//        if (!blanks.includes("_")) {
-//          correct++;
-//          nbrWins.textContent = correct;
+
+        if (!blanks.includes("_")) {
+          correct++;
+          nbrWins.textContent = correct;
           //function(e);
-//        }
+        }
       }
-//      if (!rightGuess) {
-//        guessesLeft--;
-//        remGuesses.textContent = guessesLeft;
-//      }
+      
+      //remaining guesses element should reflect one fewer remaining guess
+      if (!rightGuess) {
+        guessesLeft--;
+        remGuesses.textContent = guessesLeft;
+      }
     }
   }
 //}
 
 
 
-//remaining guesses element should reflect one fewer remaining guess
 //no changes if non-ltr key chosen or same key chosen is repeated
 //count correct wins
 //display nbr of wins in wins element
