@@ -1,3 +1,5 @@
+var Word = requires("./Word.js");
+
 var words = [
   'bananas',
   'grapes',
@@ -19,74 +21,119 @@ var remGuesses = document.getElementById("remaining-guesses");
 var nbrWins = document.getElementById("wins");
 var nbrLosses = document.getElementById("losses");
 
-var blanks = [];
-var guessedLtrs = [];
+var userGuessCorrect = false;
 var guessesLeft = 10;
-var correct = 0;
-var incorrect = 0;
+var wins = 0;
+var losses = 0;
 
-//selects list word at random
-var rdmWord = words[Math.floor(Math.random() * words.length)];
+var userGuess = "";
+var alreadyGuessedList = "";
+var alreadyGuessedArray = [];
+var slotsFilledIn;
+var randomWord;
+var someWord;
 
-//places word in the word-to-guess element
-guessWord.textContent = rdmWord.toLowerCase();
-
-//replace the word letters with underscores
-for(var i = 0; i < rdmWord.length; i++) {
-  if (rdmWord.charAt(i) !== " ") {
-    blanks.push("_");
-  }
+document.onkeyup = function start(e) {
+    guessesLeft = 10;
+    chooseRandomWord();
+    alreadyGuessedList = "";
+    alreadyGuessedArray = [];
+    slotsFilledIn = 0;
 }
-guessWord.textContent = blanks.join("");
 
-//display 10 remaining quesses in remaining-quesses element
-remGuesses.textContent = "10";
-
-//when key pressed ck if ltr is in the word
-document.onkeyup = function(e) {
-  var keyGuess = e.key.toLowerCase();
-  var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-  if (letters.includes(keyGuess) === false) {
-    return null;
-//  } else {
-//    if (guessedLtrs.includes(keyGuess.toLowerCase())) {
-//      return null;
-    } else {
-      //ltr pressed into lc & pushes to guessedLtrs array / replaces underscore
-      guessedLtrs.push(keyGuess.toLowerCase());
-      incorrectLtrs.textContent = guessedLtrs.join(" ");
-      var rightGuess = false;
-      for (var i = 0; i < rdmWord.length; i++) {
-        if (keyGuess === rdmWord.charAt(i)) {
-          blanks.splice(i, 1, keyGuess);
-          rightGuess = true;
-          guessWord.textContent = blanks.join(" ");
-        }
-
-        if (!blanks.includes("_")) {
-          correct++;
-          nbrWins.textContent = correct;
-          //function(e);
-        }
-      }
-      
-      //remaining guesses element should reflect one fewer remaining guess
-      if (!rightGuess) {
-        guessesLeft--;
-        remGuesses.textContent = guessesLeft;
-      }
+function chooseRandomWord() {
+    randomWord = words[Math.floor(Math.random() * words.length)].toLowerCase();
+    
+    someWord = new Word (randomWord);
+    //splits word and generate letters
+    someWord.splitWord();
+    someWord.generateLetters();
+    guessLetter();
     }
-  }
-//}
-
-
-
-//no changes if non-ltr key chosen or same key chosen is repeated
-//count correct wins
-//display nbr of wins in wins element
-//OR display nubr of losses
-//game automatically proceeds to next random-chosen word
-//all other elements should be reset
-//incorrect letters blank
-//remaining guesses show 10
-//previous-word element reads "mango"
+    
+    function guessLetter(){
+        if (slotsFilledIn < someWord.letters.length || guessesLeft > 0) {
+        //Check if value is a letter
+    //    function value() {
+    //        if(isLetter(value)){
+    //          return true;
+    //        } 
+    //        else {
+    //          return false;
+    //        }
+    //      }
+    //  }
+    //.then(function(guess) {
+        guess.letter.toLowerCase();
+        }
+        //Assume correct guess to be false at this point.
+        userGuessCorrect = false;
+        //was letter was already guessed 
+        if (alreadyGuessedArray.indexOf(guess.letter.toLowerCase()) > -1) {
+            guessLetter();
+        }
+    
+        else if (alreadyGuessedArray.indexOf(guess.letter.toLowerCase()) === -1) {
+            //goes with already guessed letters
+            alreadyGuessedList = alreadyGuessedList.concat(" " + guess.letter.toLowerCase());
+            alreadyGuessedArray.push(guess.letter.toLowerCase());
+            //Shows letters already guessed
+            incorrectLtrs.textContent = alreadyGuessedList, {padding: 1};
+     
+            //matches letters in word
+            for (i = 0; i < someWord.letters.length; i++) {
+                if (guess.letter.toLowerCase() === someWord.letters[i].character && someWord.letters[i].letterGuessedCorrectly === false) {
+                    //Set letterGuessedCorrectly property for that letter equal to true.
+                    someWord.letters[i].letterGuessedCorrectly === true;
+                    //Set userGuessedCorrectly to true.
+                    userGuessedCorrectly = true;
+                    someWord.underscores[i] = guess.letter.toLowerCase();
+                    // someWord.underscores.join("");
+                    // console.log(someWord.underscores);
+                    //Increment the number of slots/underscores filled in with letters by 1.
+                    slotsFilledIn++
+                    //console.log("Number of slots remaining " + slotsFilledIn);
+                }
+            }
+            someWord.splitWord();
+            someWord.generateLetters();
+    
+            //If user guessed correct
+            if (userGuessedCorrectly) {
+                checkIfUserWon();
+            }
+    
+            else {
+                //Decrease number of guesses remaining
+                guessesLeft--;
+                checkIfUserWon();
+            }
+        }
+    };
+    
+    function checkIfUserWon() {
+        if (guessesRemaining === 0) {
+            //Increment loss counter by 1.
+            losses++;
+            //Display wins and losses totals.
+            nbrWins.textContent = (wins);
+            nbrLosses.textContent = (losses);
+            
+            start();
+        }
+    
+        else if (slotsFilledIn === someWord.letters.length) {
+            //Increment win counter by 1.
+            wins++;
+            nbrWins.textContent = (wins);
+            nbrLosses.textContent = (losses);
+            
+            start();
+        }
+    
+        else {
+            //keep running if no win/loss
+            guessLetter("");
+        }
+    
+    }
