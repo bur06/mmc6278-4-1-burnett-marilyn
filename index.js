@@ -60,12 +60,12 @@ document.onkeyup = function(e) {
           blanks.splice(i, 1, keyGuess);
           rightGuess = true;
           guessWord.textContent = blanks.join(" ");
-          prevWord.textContent = blanks.result();
         }
 
         if (!blanks.includes("_")) {
           correct++;
           nbrWins.textContent = correct;
+          prevWord.textContent = guessWord.textContent.toString();
           //function(e);
         } else if (blanks.includes("_") && guessesLeft <= 0) {
           incorrect++;
