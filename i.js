@@ -19,74 +19,74 @@ var remGuesses = document.getElementById("remaining-guesses");
 var nbrWins = document.getElementById("wins");
 var nbrLosses = document.getElementById("losses");
 
-var blanks = [];
-var guessedLtrs = [];
+var guessCorrect = false;
 var guessesLeft = 10;
-var correct = 0;
-var incorrect = 0;
+var wins = 0;
+var losses = 0;
 
-//selects list word at random
-var rdmWord = words[Math.floor(Math.random() * words.length)];
+var userGuess = "";
+var alreadyGuessedList = "";
+var alreadyGuessedArray = [];
+var undScore = 0
+var rdmWord;
+var difWord;
+var ltr;
 
-//places word in the word-to-guess element
-guessWord.textContent = rdmWord.toLowerCase();
-
-//replace the word letters with underscores
-for(var i = 0; i < rdmWord.length; i++) {
-  if (rdmWord.charAt(i) !== " ") {
-    blanks.push("_");
-  }
+document.onkeyup = function start(e) {
+    guessesLeft = 10;
+    chooseWord();
+    alreadyGuessedList = "";
+    alreadyGuessedArray = [];
 }
-guessWord.textContent = blanks.join("");
 
-//display 10 remaining quesses in remaining-quesses element
-remGuesses.textContent = "10";
-
-//when key pressed ck if ltr is in the word
-document.onkeyup = function(e) {
-  var keyGuess = e.key.toLowerCase();
-  var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-  if (letters.includes(keyGuess) === false) {
-    return null;
-//  } else {
-//    if (guessedLtrs.includes(keyGuess.toLowerCase())) {
-//      return null;
-    } else {
-      //ltr pressed into lc & pushes to guessedLtrs array / replaces underscore
-      guessedLtrs.push(keyGuess.toLowerCase());
-      incorrectLtrs.textContent = guessedLtrs.join(" ");
-      var rightGuess = false;
-      for (var i = 0; i < rdmWord.length; i++) {
-        if (keyGuess === rdmWord.charAt(i)) {
-          blanks.splice(i, 1, keyGuess);
-          rightGuess = true;
-          guessWord.textContent = blanks.join(" ");
+//selects word & splits it
+function chooseWord() {
+    rdmWord = words[Math.floor(Math.random() * words.length)].toLowerCase();
+    ltr = function(character) {
+        this.character = character.toLowerCase();
+        // stores ifletter has been guessed yet
+        this.ltrGuessCorrect = false;
+        // gives underlying character if the letter has been guessed OR underscore
+        this.showCharacter = function() {
+            if (this.ltrGuessCorrect) {
+                console.log(this.character);
+            }
+            else {
+                //console.log("_");
+            }
+    
         }
-
-        if (!blanks.includes("_")) {
-          correct++;
-          nbrWins.textContent = correct;
-          //function(e);
-        }
-      }
-      
-      //remaining guesses element should reflect one fewer remaining guess
-      if (!rightGuess) {
-        guessesLeft--;
-        remGuesses.textContent = guessesLeft;
-      }
     }
-  }
-//}
+
+    rdmWord = function(myWord) {
+        this.myWord = myWord;
+        //ltr array of random chosen word
+        this.letters = [];
+        //underscore array amt for chosen word 
+        this.underscores = [];
+        //add letters to the this.letters array.
+        this.splitWord = function() {
+            this.letters = this.myWord.split("");
+            //underscores needed from this.letters array
+            nbrUscoresNeeded = this.letters.length;
+            //console.log(nbrUscoresNeeded);
+            //push underscores to the this.underscores array & join
+            for (var i = 0; i < nbrUscoresNeeded; i++ ) {
+            this.underscores.push("_");
+            }
+            console.log(this.underscores.join(" "));
+        }
+//        this.generateLtrs = function() {
+//            for (i = 0; i < this.letters.length; i++){
+//                this.letters[i] = new Letter (this.letters[i]);
+                //this.letters[i].letterGuessedCorrectly = true;
+                //This line of code shows the super array of letter objects for debugging purposes.
+                //console.log(this.letters[i]);
+//                this.letters[i].showCharacter();
+//            }
+//        }
+    }
 
 
 
-//no changes if non-ltr key chosen or same key chosen is repeated
-//count correct wins
-//display nbr of wins in wins element
-//OR display nubr of losses
-//game automatically proceeds to next random-chosen word
-//all other elements should be reset
-//incorrect letters blank
-//remaining guesses show 10
-//previous-word element reads "mango"
+}
