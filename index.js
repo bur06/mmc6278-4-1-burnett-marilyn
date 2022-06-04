@@ -43,7 +43,7 @@ guessWord.textContent = blanks.join("");
 remGuesses.textContent = "10";
 
 //when key pressed ck if ltr is in the word
-document.onkeyup = function(e) {
+document.onkeyup = function start(e) {
   var keyGuess = e.key.toLowerCase();
   var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
@@ -66,11 +66,12 @@ document.onkeyup = function(e) {
           correct++;
           nbrWins.textContent = correct;
           prevWord.textContent = guessWord.textContent.toString();
-          //function(e);
         } else if (blanks.includes("_") && guessesLeft <= 0) {
           incorrect++;
           nbrLosses.textContent = incorrect;
         }
+
+        start(e);
       }
       
       //remaining guesses element should reflect one fewer remaining guess
