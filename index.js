@@ -49,10 +49,8 @@ document.onkeyup = function(e) {
 
   if ((letters.includes(keyGuess) === false) || (guessedLtrs.includes(keyGuess.toLowerCase()))) {
     return null;
-  }
-  
 
-  /*  } else {
+  } else {
       //ltr pressed into lc & pushes to guessedLtrs array / replaces underscore
       guessedLtrs.push(keyGuess.toLowerCase());
       incorrectLtrs.textContent = guessedLtrs.join(" ");
@@ -77,8 +75,6 @@ document.onkeyup = function(e) {
         remGuesses.textContent = guessesLeft;
       }
     }
-  }
-*/
 }
 
 
