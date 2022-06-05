@@ -65,7 +65,7 @@ document.onkeyup = function start(e) {
         if (!blanks.includes("_")) {
           correct++;
           nbrWins.textContent = correct;
-          prevWord.textContent = guessWord.textContent.toString();
+          prevWord.textContent = guessWord.innerText.toString();
         } else if (blanks.includes("_") && guessesLeft <= 0) {
           incorrect++;
           nbrLosses.textContent = incorrect;
