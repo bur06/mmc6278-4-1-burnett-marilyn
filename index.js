@@ -25,6 +25,16 @@ var guessesLeft = 10;
 var correct = 0;
 var incorrect = 0;
 
+function reset() {
+  blanks = [];
+  guessedLtrs = [];
+  guessesLeft = 10;
+  guessWord = "";
+  prevWord = "";
+  incorrectLtrs = "";
+  remGuesses = "";
+}
+
 //selects list word at random
 var rdmWord = words[Math.floor(Math.random() * words.length)];
 
@@ -66,12 +76,10 @@ document.onkeyup = function start(e) {
           correct++;
           nbrWins.textContent = correct;
           prevWord.textContent = guessWord.innerText.toString();
-          setTimeout(start, 10000);
 
-        } else if (blanks.includes("_") && guessesLeft <= 0) {
+        } else if (blanks.includes("_") && guessesLeft == 0) {
           incorrect++;
           nbrLosses.textContent = incorrect;
-          setTimeout(start, 10000);
         }
 
       }
@@ -85,10 +93,11 @@ document.onkeyup = function start(e) {
       if (guessesLeft === 0) {
         incorrect++;
         nbrLosses.textContent = incorrect;
-        setTimeout(start, 10000);
       }
     }
-}
+    reset()
+} 
+
 
 
 //count correct wins
