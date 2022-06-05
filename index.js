@@ -76,10 +76,12 @@ document.onkeyup = function start(e) {
           correct++;
           nbrWins.textContent = correct;
           prevWord.textContent = guessWord.innerText.toString();
+          setTimeout(reset(), 10);
 
         } else if (blanks.includes("_") && guessesLeft == 0) {
           incorrect++;
           nbrLosses.textContent = incorrect;
+          setTimeout(reset(), 10);
         }
 
       }
@@ -93,9 +95,9 @@ document.onkeyup = function start(e) {
       if (guessesLeft === 0) {
         incorrect++;
         nbrLosses.textContent = incorrect;
+        setTimeout(reset(), 10);
       }
     }
-    reset()
 } 
 
 
