@@ -27,6 +27,7 @@ var incorrect = 0;
 
 
 //selects list word at random
+prevWord.textContent = guessWord.innerText.toString();
 var rdmWord = words[Math.floor(Math.random() * words.length)];
 
 //places word in the word-to-guess element
@@ -67,12 +68,16 @@ document.onkeyup = function start(e) {
           correct++;
           nbrWins.textContent = correct;
           prevWord.textContent = guessWord.innerText.toString();
-          setTimeout(reset(), 10);
+          reset();
+          location.reload();
+          prevWord.textContent = guessWord.innerText.toString();
 
         } else if (blanks.includes("_") && guessesLeft == 0) {
           incorrect++;
           nbrLosses.textContent = incorrect;
-          setTimeout(reset(), 10);
+          reset();
+          location.reload();
+          prevWord.textContent = guessWord.innerText.toString();
         }
 
       }
@@ -86,10 +91,13 @@ document.onkeyup = function start(e) {
       if (guessesLeft === 0) {
         incorrect++;
         nbrLosses.textContent = incorrect;
-        setTimeout(reset(), 10);
+        reset();
+        location.reload();
+        prevWord.textContent = guessWord.innerText.toString();
       }
     }
     function reset(rdmWord) {
+      prevWord.textContent = guessWord.innerText.toString();
       blanks = [];
       guessedLtrs = [];
       guessesLeft = 10;
