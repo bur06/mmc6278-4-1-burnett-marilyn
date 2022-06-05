@@ -89,17 +89,17 @@ document.onkeyup = function start(e) {
         setTimeout(reset(), 10);
       }
     }
+    function reset(rdmWord) {
+      blanks = [];
+      guessedLtrs = [];
+      guessesLeft = 10;
+      guessWord = "";
+      incorrectLtrs = "";
+      remGuesses = "";
+    }
+    start(e);
 } 
 
-function reset() {
-  blanks = [];
-  guessedLtrs = [];
-  guessesLeft = 10;
-  guessWord = "";
-  prevWord = "";
-  incorrectLtrs = "";
-  remGuesses = "";
-}
 
 
 //count correct wins
