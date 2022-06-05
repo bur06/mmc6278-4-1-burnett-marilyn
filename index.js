@@ -25,15 +25,6 @@ var guessesLeft = 10;
 var correct = 0;
 var incorrect = 0;
 
-function reset() {
-  blanks = [];
-  guessedLtrs = [];
-  guessesLeft = 10;
-  guessWord = "";
-  prevWord = "";
-  incorrectLtrs = "";
-  remGuesses = "";
-}
 
 //selects list word at random
 var rdmWord = words[Math.floor(Math.random() * words.length)];
@@ -100,6 +91,15 @@ document.onkeyup = function start(e) {
     }
 } 
 
+function reset() {
+  blanks = [];
+  guessedLtrs = [];
+  guessesLeft = 10;
+  guessWord = "";
+  prevWord = "";
+  incorrectLtrs = "";
+  remGuesses = "";
+}
 
 
 //count correct wins
