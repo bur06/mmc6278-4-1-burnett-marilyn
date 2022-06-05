@@ -27,7 +27,6 @@ var incorrect = 0;
 
 
 //selects list word at random
-prevWord.textContent = guessWord.innerText.toString();
 var rdmWord = words[Math.floor(Math.random() * words.length)];
 
 //places word in the word-to-guess element
@@ -111,8 +110,4 @@ document.onkeyup = function start(e) {
 
 
 //count correct wins
-//game automatically proceeds to next random-chosen word
-//all other elements should be reset
-//incorrect letters blank
-//remaining guesses show reset 10
 //previous-word element stays
