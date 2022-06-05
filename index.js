@@ -66,12 +66,14 @@ document.onkeyup = function start(e) {
           correct++;
           nbrWins.textContent = correct;
           prevWord.textContent = guessWord.innerText.toString();
+          setTimeout(start, 10000);
+
         } else if (blanks.includes("_") && guessesLeft <= 0) {
           incorrect++;
           nbrLosses.textContent = incorrect;
+          setTimeout(start, 10000);
         }
 
-        start(e);
       }
       
       //remaining guesses element should reflect one fewer remaining guess
@@ -79,17 +81,19 @@ document.onkeyup = function start(e) {
         guessesLeft--;
         remGuesses.textContent = guessesLeft;
       }
+
+      if (guessesLeft === 0) {
+        incorrect++;
+        nbrLosses.textContent = incorrect;
+        setTimeout(start, 10000);
+      }
     }
 }
 
 
-
-//no changes if non-ltr key chosen or same key chosen is repeated
 //count correct wins
-//display nbr of wins in wins element
-//OR display nubr of losses
 //game automatically proceeds to next random-chosen word
 //all other elements should be reset
 //incorrect letters blank
-//remaining guesses show 10
-//previous-word element reads "mango"
+//remaining guesses show reset 10
+//previous-word element stays
