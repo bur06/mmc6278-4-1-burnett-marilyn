@@ -54,12 +54,12 @@ document.onkeyup = function start(e) {
   } else {
       //ltr pressed into lc & pushes to guessedLtrs array / replaces underscore
       guessedLtrs.push(keyGuess.toLowerCase());
-      var rightGuess = false;
+      var rightGuess = true;
       incorrectLtrs.textContent = guessedLtrs.join(" ");
       for (var i = 0; i < rdmWord.length; i++) {
         if (keyGuess === rdmWord.charAt(i)) {
           blanks.splice(i, 1, keyGuess);
-          rightGuess = true;
+          rightGuess = false;
           guessWord.textContent = blanks.join(" ");
         }
 
@@ -68,21 +68,21 @@ document.onkeyup = function start(e) {
           nbrWins.textContent = correct;
           prevWord.textContent = guessWord.innerText.toString();
           reset();
-          setTimeout(() => document.location.reload(), 1500);
+          setTimeout(() => document.location.reload(), 2000);
           prevWord.textContent = guessWord.innerText.toString();
 
         } else if (blanks.includes("_") && guessesLeft == 0) {
           incorrect++;
           nbrLosses.textContent = incorrect;
           reset();
-          setTimeout(() => document.location.reload(), 1500);
+          setTimeout(() => document.location.reload(), 2000);
           prevWord.textContent = guessWord.innerText.toString();
         }
 
       }
       
       //remaining guesses element should reflect one fewer remaining guess
-      if (!rightGuess) {
+      if (rightGuess) {
         guessesLeft--;
         remGuesses.textContent = guessesLeft;
       }
@@ -91,7 +91,7 @@ document.onkeyup = function start(e) {
         incorrect++;
         nbrLosses.textContent = incorrect;
         reset();
-        setTimeout(() => document.location.reload(), 1500);
+        setTimeout(() => document.location.reload(), 2000);
         prevWord.textContent = guessWord.innerText.toString();
       }
     }
