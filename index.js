@@ -24,6 +24,8 @@ var guessedLtrs = [];
 var guessesLeft = 10;
 var correct = 0;
 var incorrect = 0;
+var rightLtr;
+var wrongLtr;
 
 
 //selects list word at random
@@ -80,6 +82,16 @@ document.onkeyup = function start(e) {
           keepWord = prevWord(value);
         }
 
+      }
+
+      if (rightLtr) {
+        incorrectLtrs.textContent.includes(keyGuess) = false;
+        rightLtr++;
+      }
+
+      if (wrongLtr) {
+        incorrectLtrs.textContent.includes(keyGuess) = true;
+        wrongLtr++;
       }
       
       //remaining guesses element should reflect one fewer remaining guess
