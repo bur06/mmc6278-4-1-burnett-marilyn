@@ -68,14 +68,14 @@ document.onkeyup = function start(e) {
           nbrWins.textContent = correct;
           prevWord.textContent = guessWord.innerText.toString();
           reset();
-          setTimeout(() => document.location.reload(), 1000);
+          setTimeout(() => document.location.reload(), 1500);
           prevWord.textContent = guessWord.innerText.toString();
 
         } else if (blanks.includes("_") && guessesLeft == 0) {
           incorrect++;
           nbrLosses.textContent = incorrect;
           reset();
-          setTimeout(() => document.location.reload(), 1000);
+          setTimeout(() => document.location.reload(), 1500);
           prevWord.textContent = guessWord.innerText.toString();
         }
 
@@ -91,7 +91,7 @@ document.onkeyup = function start(e) {
         incorrect++;
         nbrLosses.textContent = incorrect;
         reset();
-        setTimeout(() => document.location.reload(), 1000);
+        setTimeout(() => document.location.reload(), 1500);
         prevWord.textContent = guessWord.innerText.toString();
       }
     }
