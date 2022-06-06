@@ -69,14 +69,15 @@ document.onkeyup = function start(e) {
           prevWord.textContent = guessWord.innerText.toString();
           reset();
           setTimeout(() => document.location.reload(), 2000);
-          prevWord.textContent = guessWord.innerText.toString();
+          var keepWord = guessWord.textContent.values();
+          keepWord = prevWord(value);
 
         } else if (blanks.includes("_") && guessesLeft == 0) {
           incorrect++;
           nbrLosses.textContent = incorrect;
           reset();
           setTimeout(() => document.location.reload(), 2000);
-          prevWord.textContent = guessWord.innerText.toString();
+          keepWord = prevWord(value);
         }
 
       }
@@ -92,11 +93,10 @@ document.onkeyup = function start(e) {
         nbrLosses.textContent = incorrect;
         reset();
         setTimeout(() => document.location.reload(), 2000);
-        prevWord.textContent = guessWord.innerText.toString();
+        keepWord = prevWord(value);
       }
     }
-    function reset(rdmWord) {
-      prevWord.textContent = guessWord.innerText.toString();
+    function reset() {
       blanks = [];
       guessedLtrs = [];
       guessesLeft = 10;
