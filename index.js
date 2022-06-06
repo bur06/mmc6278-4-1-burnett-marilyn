@@ -106,8 +106,3 @@ document.onkeyup = function start(e) {
     }
     start(e);
 } 
-
-
-
-//count correct wins
-//previous-word element stays
