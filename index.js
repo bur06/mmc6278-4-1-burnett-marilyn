@@ -24,8 +24,7 @@ var guessedLtrs = [];
 var guessesLeft = 10;
 var correct = 0;
 var incorrect = 0;
-var rightLtr;
-var wrongLtr;
+
 
 function reset() {
   rdmWord = words[Math.floor(Math.random() * words.length)];
@@ -89,16 +88,6 @@ document.onkeyup = function start(e) {
 
       }
 
-      if (rightLtr) {
-        incorrectLtrs.textContent.includes(keyGuess) = false;
-        rightLtr++;
-      }
-
-      if (wrongLtr) {
-        incorrectLtrs.textContent.includes(keyGuess) = true;
-        wrongLtr++;
-      }
-      
       //remaining guesses element should reflect one fewer remaining guess
       if (rightGuess) {
         guessesLeft--;
