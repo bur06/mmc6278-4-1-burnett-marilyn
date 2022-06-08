@@ -21,20 +21,11 @@ var nbrLosses = document.getElementById("losses");
 
 var blanks = [];
 var guessedLtrs = [];
+var correctGuess = [];
+var incorrectGuess = [];
 var guessesLeft = 10;
 var correct = 0;
 var incorrect = 0;
-
-
-function reset() {
-  rdmWord = words[Math.floor(Math.random() * words.length)];
-  blanks = [];
-  guessedLtrs = [];
-  guessesLeft = 10;
-  guessWord = "";
-  incorrectLtrs = "";
-  remGuesses = "";
-}
 
 
 //selects list word at random
@@ -43,8 +34,9 @@ var rdmWord = words[Math.floor(Math.random() * words.length)];
 //places word in the word-to-guess element
 guessWord.textContent = rdmWord.toLowerCase();
 
+
 //replace the word letters with underscores
-for(var i = 0; i < rdmWord.length; i++) {
+for (var i = 0; i < rdmWord.length; i++) {
   if (rdmWord.charAt(i) !== " ") {
     blanks.push("_");
   }
@@ -72,6 +64,8 @@ document.onkeyup = function start(e) {
           blanks.splice(i, 1, keyGuess);
           rightGuess = false;
           guessWord.textContent = blanks.join("");
+          rightGuess = correctGuess.join("");
+          rightGuess != incorrectGuess.join("");
         }
 
         if (!blanks.includes("_")) {
@@ -99,5 +93,15 @@ document.onkeyup = function start(e) {
         nbrLosses.textContent = incorrect;
         reset();
       }
+    }
+  
+    function reset() {
+      blanks = [];
+      guessedLtrs = [];
+      guessesLeft = 10;
+      guessWord = "";
+      incorrectLtrs = "";
+      remGuesses = "";
+      rdmWord = "words[Math.floor(Math.random() * words.length)]";
     }
 } 
