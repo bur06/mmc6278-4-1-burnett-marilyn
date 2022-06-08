@@ -27,6 +27,16 @@ var incorrect = 0;
 var rightLtr;
 var wrongLtr;
 
+function reset() {
+  rdmWord = words[Math.floor(Math.random() * words.length)];
+  blanks = [];
+  guessedLtrs = [];
+  guessesLeft = 10;
+  guessWord = "";
+  incorrectLtrs = "";
+  remGuesses = "";
+}
+
 
 //selects list word at random
 var rdmWord = words[Math.floor(Math.random() * words.length)];
@@ -62,7 +72,7 @@ document.onkeyup = function start(e) {
         if (keyGuess === rdmWord.charAt(i)) {
           blanks.splice(i, 1, keyGuess);
           rightGuess = false;
-          guessWord.textContent = blanks.join(" ");
+          guessWord.textContent = blanks.join("");
         }
 
         if (!blanks.includes("_")) {
@@ -70,16 +80,11 @@ document.onkeyup = function start(e) {
           nbrWins.textContent = correct;
           prevWord.textContent = guessWord.innerText.toString();
           reset();
-          setTimeout(() => document.location.reload(), 2000);
-          var keepWord = guessWord.textContent.values();
-          keepWord = prevWord(value);
 
         } else if (blanks.includes("_") && guessesLeft == 0) {
           incorrect++;
           nbrLosses.textContent = incorrect;
           reset();
-          setTimeout(() => document.location.reload(), 2000);
-          keepWord = prevWord(value);
         }
 
       }
@@ -104,17 +109,6 @@ document.onkeyup = function start(e) {
         incorrect++;
         nbrLosses.textContent = incorrect;
         reset();
-        setTimeout(() => document.location.reload(), 2000);
-        keepWord = prevWord(value);
       }
     }
-    function reset() {
-      blanks = [];
-      guessedLtrs = [];
-      guessesLeft = 10;
-      guessWord = "";
-      incorrectLtrs = "";
-      remGuesses = "";
-    }
-    start(e);
 } 
